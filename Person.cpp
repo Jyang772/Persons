@@ -14,23 +14,52 @@ Person::Person(const char* name, int age, const std::string &ssn){
 	m_ssn = ssn;
 }
 
-void Person::getName()
+std::string Person::getName()
 {
-	std::cout << m_name << "\n";
+    return m_name;
 }
+
+std::string Person::getSSN()
+{
+    return m_ssn;
+}
+
+int Person::getAge()
+{
+    return m_age;
+}
+
+void Person::setName(const char* name)
+{
+    m_name = name;
+
+}
+
+void Person::setSSN(const std::string &ssn)
+{
+    m_ssn = ssn;
+}
+
+void Person::setAge(int age)
+{
+    m_age = age;
+}
+
 
 Person::~Person()
 {
 
-	delete [] m_name;
+
 }
 
 
 std::ostream& operator<<(std::ostream& os, const Person &p)
 {
-    std::cout << "Person name: " << p.m_name << "\n";
-    std::cout << "Age: " << p.m_age << "\n";
-    std::cout << "Social Security: " << p.m_ssn << "\n";
+    os << "Person name: " << p.m_name << "\n";
+    os << "Age: " << p.m_age << "\n";
+    os << "Social Security: " << p.m_ssn << "\n";
+
+    return os;
 }
 
 std::istream& operator>>(std::istream& is, Person &p)
@@ -38,7 +67,9 @@ std::istream& operator>>(std::istream& is, Person &p)
     //std::cout << "Person's name: ";
     //std::cin >> p.m_name;
     std::cout << p.m_name << "'s age: ";
-    std::cin >> p.m_age;
+    is >> p.m_age;
     std::cout << p.m_name << "'s SSN: ";
-    std::cin >> p.m_ssn;
+    is >> p.m_ssn;
+
+    return is;
 }

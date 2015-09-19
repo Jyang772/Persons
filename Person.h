@@ -25,12 +25,21 @@ class Person
 
     friend std::ostream & operator<< (std::ostream &os,const Person &p);
     friend std::istream & operator>> (std::istream &is, Person &p);
+
 public:
 	Person();
 	Person(const char* name, int age, const std::string &ssn);
     ~Person();
 
-	void getName();
+    std::string getName();
+    std::string getSSN();
+    int getAge();
+
+    void setName(const char*);
+    void setAge(int);
+    void setSSN(const std::string&);
+
+
 private:
     const char *m_name;
 	int m_age;
