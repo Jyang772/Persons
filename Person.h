@@ -16,33 +16,64 @@ class Person
 //    5. Overloaded input and output operators.
 };*/
 
-#include <string>
-#include <ostream>
+#ifndef PERSON_H
+#define PERSON_H
+
+
+//#include <string>
+//#include <ostream>
+//#include <iostream>
+
+//class Person
+//{
+
+//    friend std::ostream & operator<< (std::ostream &os,const Person &p);
+//    friend std::istream & operator>> (std::istream &is, Person &p);
+
+//public:
+//	Person();
+//	Person(const char* name, int age, const std::string &ssn);
+//    ~Person();
+
+//    std::string getName() const;
+//    std::string getSSN();
+//    int getAge();
+
+//    void setName(const char*);
+//    void setAge(int);
+//    void setSSN(const std::string&);
+
+
+//private:
+//    const char *m_name;
+//	int m_age;
+//	std::string m_ssn;
+//};
+
 #include <iostream>
+#include <string>
 
 class Person
 {
-
-    friend std::ostream & operator<< (std::ostream &os,const Person &p);
-    friend std::istream & operator>> (std::istream &is, Person &p);
-
-public:
-	Person();
-	Person(const char* name, int age, const std::string &ssn);
-    ~Person();
-
-    std::string getName();
-    std::string getSSN();
-    int getAge();
-
-    void setName(const char*);
-    void setAge(int);
-    void setSSN(const std::string&);
-
-
+    friend std::istream& operator>>(std::istream&, Person&);
+    friend std::ostream& operator<<(std::ostream&, Person&);
 private:
-    const char *m_name;
-	int m_age;
-	std::string m_ssn;
+    char* m_name;
+    int m_age;
+    std::string m_ssn;
+public:
+    Person() = default;
+    Person(char*, int, const std::string&);
+    Person(const Person&);
+    ~Person();
+    void setName(char*);
+    char* getName();
+    void setAge(int);
+    int getAge();
+    void setSSN(std::string);
+    std::string getSSN();
+    Person& operator=(const Person&);
 };
 
+
+#endif

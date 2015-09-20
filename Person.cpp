@@ -1,43 +1,61 @@
 #include "Person.h"
 
-Person::Person()
+std::istream& operator>>(std::istream &is, Person &iPerson)
 {
+    is >> iPerson.m_name >> iPerson.m_age >> iPerson.m_ssn;
+
+    return is;
 }
 
-Person::Person(const char* name, int age, const std::string &ssn){
-
-	std::cout << "Person constructor called.\n";
-	std::cout << name << "\n";
-	
-	m_name = name;
-	m_age = age;
-	m_ssn = ssn;
-}
-
-std::string Person::getName()
+std::ostream& operator<<(std::ostream &os, Person &oPerson)
 {
-    return m_name;
+    os <<   "Name: " << oPerson.m_name << std::endl <<
+            "Age: " << oPerson.m_age << std::endl <<
+            "SSN: " << oPerson.m_ssn;
+
+    return os;
 }
 
-std::string Person::getSSN()
+Person& Person::operator=(const Person &iPerson)
 {
-    return m_ssn;
+    m_name = iPerson.m_name;
+    m_age = iPerson.m_age;
+    m_ssn = iPerson.m_ssn;
+
+    return *this;
 }
 
-int Person::getAge()
-{
-    return m_age;
-}
+// Constructors
 
-void Person::setName(const char* name)
+Person::Person(char* name, int age, const std::string &ssn)
 {
     m_name = name;
+    m_age = age;
+    m_ssn = ssn;
+}
+
+Person::Person(const Person &p)
+{
+    m_name = p.m_name;
+    m_age = p.m_age;
+    m_ssn = p.m_ssn;
+}
+
+Person::~Person()
+{
 
 }
 
-void Person::setSSN(const std::string &ssn)
+// Accessors and Mutators
+
+void Person::setName(char* name)
 {
-    m_ssn = ssn;
+    m_name = name;
+}
+
+char* Person::getName()
+{
+    return m_name;
 }
 
 void Person::setAge(int age)
@@ -45,31 +63,17 @@ void Person::setAge(int age)
     m_age = age;
 }
 
-
-Person::~Person()
+int Person::getAge()
 {
-
-
+    return m_age;
 }
 
-
-std::ostream& operator<<(std::ostream& os, const Person &p)
+void Person::setSSN(std::string ssn)
 {
-    os << "Person name: " << p.m_name << "\n";
-    os << "Age: " << p.m_age << "\n";
-    os << "Social Security: " << p.m_ssn << "\n";
-
-    return os;
+    m_ssn = ssn;
 }
 
-std::istream& operator>>(std::istream& is, Person &p)
+std::string Person::getSSN()
 {
-    //std::cout << "Person's name: ";
-    //std::cin >> p.m_name;
-    std::cout << p.m_name << "'s age: ";
-    is >> p.m_age;
-    std::cout << p.m_name << "'s SSN: ";
-    is >> p.m_ssn;
-
-    return is;
+    return m_ssn;
 }

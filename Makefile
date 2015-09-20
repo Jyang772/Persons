@@ -47,10 +47,14 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		Person.cpp \
-		student.cpp 
+		student.cpp \
+		faculty.cpp \
+		voter.cpp 
 OBJECTS       = main.o \
 		Person.o \
-		student.o
+		student.o \
+		faculty.o \
+		voter.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -297,7 +301,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/Persons1.0.0 || mkdir -p .tmp/Persons1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Persons1.0.0/ && $(COPY_FILE) --parents Person.h student.h .tmp/Persons1.0.0/ && $(COPY_FILE) --parents main.cpp Person.cpp student.cpp .tmp/Persons1.0.0/ && (cd `dirname .tmp/Persons1.0.0` && $(TAR) Persons1.0.0.tar Persons1.0.0 && $(COMPRESS) Persons1.0.0.tar) && $(MOVE) `dirname .tmp/Persons1.0.0`/Persons1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Persons1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Persons1.0.0/ && $(COPY_FILE) --parents Person.h student.h faculty.h voter.h .tmp/Persons1.0.0/ && $(COPY_FILE) --parents main.cpp Person.cpp student.cpp faculty.cpp voter.cpp .tmp/Persons1.0.0/ && (cd `dirname .tmp/Persons1.0.0` && $(TAR) Persons1.0.0.tar Persons1.0.0 && $(COMPRESS) Persons1.0.0.tar) && $(MOVE) `dirname .tmp/Persons1.0.0`/Persons1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Persons1.0.0
 
 
 clean:compiler_clean 
@@ -334,14 +338,23 @@ compiler_clean:
 
 ####### Compile
 
-main.o: main.cpp Person.h
+main.o: main.cpp Person.h \
+		student.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 Person.o: Person.cpp Person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Person.o Person.cpp
 
-student.o: student.cpp student.h
+student.o: student.cpp student.h \
+		Person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o student.o student.cpp
+
+faculty.o: faculty.cpp faculty.h \
+		Person.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o faculty.o faculty.cpp
+
+voter.o: voter.cpp voter.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o voter.o voter.cpp
 
 ####### Install
 

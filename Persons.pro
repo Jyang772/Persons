@@ -8,6 +8,10 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += Person.h \
-    student.h
+    student.h \
+    faculty.h \
+    voter.h
 SOURCES += main.cpp Person.cpp \
-    student.cpp
+    student.cpp \
+    faculty.cpp \
+    voter.cpp

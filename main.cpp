@@ -1,4 +1,7 @@
 #include "Person.h"
+#include "student.h"
+#include "faculty.h"
+
 #include <iostream>
 #include <string.h>
 #include <stdlib.h>
@@ -10,16 +13,10 @@
 int main()
 {
 
-//    char *s = "hello";
-//    char *t = (char*)malloc(sizeof(char) * strlen(s));
-//    strcpy(t,s);
-//    std::cout << t << std::endl;
+    Person driver("Richard Stallman",62,"444-44-4444");
+    std::cout << driver << std::endl;
 
-//    free((char*)t);
-//    std::cout << t << std::endl;
 
-	Person test("Penguin", 20, "444-44-4444");
-    //std::cin >> test;
-
-    std::cout << test;
 }
+
+

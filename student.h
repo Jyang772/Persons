@@ -2,6 +2,7 @@
 #define STUDENT_H
 
 #include "Person.h"
+
 //class Student : public Person
 //{
 //    //Private member data:
@@ -13,17 +14,19 @@
 //    //       each of the member data items in the class.
 //    //    3. Overload the input and output operators for the class.
 
-
 class Student : public Person
 {
-
-public:
-    Student();
-    Student(const char * name, int age, const std::string &ssn, float gpa);
-    Student(const Student &s); //Copy constructor
-
+    friend std::istream& operator>>(std::istream&, Student&);
+    friend std::ostream& operator<<(std::ostream&, Student&);
 private:
     float m_gpa;
+public:
+    Student() = default;
+    Student(char*, int, const std::string&, float);
+    Student(const Student&);
+    void setGPA(float);
+    float getGPA();
+    Student& operator=(const Student&);
 };
 
 #endif // STUDENT_H
