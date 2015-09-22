@@ -33,6 +33,8 @@ Student::Student(char* name, int age, const std::string &ssn, float gpa)
     setAge(age);
     setSSN(ssn);
 
+    m_gpa = gpa;
+
 }
 
 Student& Student::operator=(const Student &Student)
