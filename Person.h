@@ -52,6 +52,7 @@ class Person
 
 #include <iostream>
 #include <string>
+#include <string.h>
 
 class Person
 {

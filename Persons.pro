@@ -5,6 +5,7 @@
 TEMPLATE = app
 TARGET = Persons
 INCLUDEPATH += .
+CONFIG += c++11
 
 # Input
 HEADERS += Person.h \
