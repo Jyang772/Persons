@@ -9,7 +9,7 @@ std::istream& operator>>(std::istream &is, Voter &iVoter)
 
 std::ostream& operator<<(std::ostream &os, Voter &oVoter)
 {
-    os <<   "Name: " << oVoter.getName() << std::endl <<
+    os <<   "Name: " << oVoter.Name() << std::endl <<
             "Age: " << oVoter.getAge() << std::endl <<
             "SSN: " << oVoter.getSSN() << std::endl <<
             "Party Affiliation: " << oVoter.getPartyAffiliation();
@@ -21,7 +21,7 @@ std::ostream& operator<<(std::ostream &os, Voter &oVoter)
 
 Voter::Voter(char* name, int age, const std::string &ssn, const std::string &partyAffiliation)
 {
-    setName(name);
+    Name(name);
     setAge(age);
     setSSN(ssn);
     setPartyAffiliation(partyAffiliation);

@@ -15,4 +15,5 @@ HEADERS += Person.h \
 SOURCES += main.cpp Person.cpp \
     student.cpp \
     faculty.cpp \
-    voter.cpp
+    voter.cpp \
+    CheckOutPersonClass.cpp

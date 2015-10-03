@@ -9,7 +9,7 @@ std::istream& operator>>(std::istream &is, Faculty &iFaculty)
 
 std::ostream& operator<<(std::ostream &os, Faculty &oFaculty)
 {
-    os <<   "Name: " << oFaculty.getName() << std::endl <<
+    os <<   "Name: " << oFaculty.Name() << std::endl <<
             "Age: " << oFaculty.getAge() << std::endl <<
             "SSN: " << oFaculty.getSSN() << std::endl <<
             "Degree Count: " << oFaculty.getNumberOfDegrees() << std::endl;
@@ -22,7 +22,7 @@ std::ostream& operator<<(std::ostream &os, Faculty &oFaculty)
 
 Faculty::Faculty(char* name, int age, const std::string &ssn, int numberOfDegrees, const std::string* degrees)
 {
-    setName(name);
+    Name(name);
     setAge(age);
     setSSN(ssn);
 

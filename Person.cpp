@@ -19,12 +19,11 @@ std::ostream& operator<<(std::ostream &os, Person &oPerson)
 Person& Person::operator=(const Person &iPerson)
 {
 
-    std::cout << "Inside: " << std::endl;
+    std::cout << "Inside assign: " << std::endl << std::flush;
     int length = strlen(iPerson.m_name)+1;
     m_name = new char[length]();
     for(int i=0; i<length; i++)
     {
-        std::cout << iPerson.m_name[i];
         m_name[i] = iPerson.m_name[i];
     }
     m_name[length-1] = '\0';
@@ -56,7 +55,6 @@ Person::Person(char* name, int age, const std::string &ssn)
 
 Person::Person(const Person &p)
 {
-    //m_name = p.m_name;
 
     int length = strlen(p.m_name)+1; //+1 for null
     m_name = new char[length]();
@@ -66,6 +64,7 @@ Person::Person(const Person &p)
     }
     m_name[length-1] = '\0';
 
+    //m_name = p.m_name;
     m_age = p.m_age;
     m_ssn = p.m_ssn;
 }
@@ -78,12 +77,12 @@ Person::~Person()
 
 // Accessors and Mutators
 
-void Person::setName(char* name)
+void Person::Name(char* name)
 {
     m_name = name;
 }
 
-char* Person::getName()
+char* Person::Name()
 {
     return m_name;
 }

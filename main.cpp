@@ -8,31 +8,29 @@
 #include <stdio.h>
 
 
-
+void CheckOutPersonClass();
 
 int main()
 {
-
-    int one = 1;
-    int two = one;
-    std::cout << two << std::endl;
+    CheckOutPersonClass();
 
 
-    Person driver("Richard Stallman",62,"444-44-4444");
-    std::cout << driver << std::endl;
 
 
-    std::cout << "Before: " << std::endl;
+//    Person driver("Richard Stallman",62,"444-44-4444");
+//    std::cout << driver << std::endl;
 
 
-    Person test = driver;
+//    std::cout << "Before: " << std::endl;
 
-    //driver.~Person();
-    std::cout << test << std::endl;
 
-    //std::cout << test << std::endl;
+//    Person test = driver;
+//    std::cout << "as" << std::endl;
+//    //driver.~Person();
 
-    std::cout << "End" << std::endl;
+//    std::cout << "Printing Test" << std::endl;
+//    std::cout << test << std::endl;
+//    std::cout << "End" << std::endl;
 
 
 

@@ -8,7 +8,7 @@ std::istream& operator>>(std::istream &is, Student &iStudent)
 
     is >> name >> age >> ssn;
 
-    iStudent.setName(name);
+    iStudent.Name(name);
     iStudent.setAge(age);
     iStudent.setSSN(ssn);
 
@@ -17,7 +17,7 @@ std::istream& operator>>(std::istream &is, Student &iStudent)
 
 std::ostream& operator<<(std::ostream &os, Student &oStudent)
 {
-    os <<   "Name: " << oStudent.getName() << std::endl <<
+    os <<   "Name: " << oStudent.Name() << std::endl <<
             "Age: " << oStudent.getAge() << std::endl <<
             "SSN: " << oStudent.getSSN() << std::endl <<
             "GPA: " << oStudent.getGPA();
@@ -29,7 +29,7 @@ std::ostream& operator<<(std::ostream &os, Student &oStudent)
 
 Student::Student(char* name, int age, const std::string &ssn, float gpa)
 {
-    setName(name);
+    Name(name);
     setAge(age);
     setSSN(ssn);
 

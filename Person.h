@@ -67,8 +67,8 @@ public:
     Person(char*, int, const std::string&);
     Person(const Person&);
     ~Person();
-    void setName(char*);
-    char* getName();
+    void Name(char*);
+    char* Name();
     void setAge(int);
     int getAge();
     void setSSN(std::string);
