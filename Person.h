@@ -70,7 +70,7 @@ public:
     void Name(char*);
     char* Name();
     void setAge(int);
-    int getAge();
+    int getAge() const;
     void setSSN(std::string);
     std::string getSSN();
     Person& operator=(const Person&);

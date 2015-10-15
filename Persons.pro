@@ -12,8 +12,10 @@ HEADERS += Person.h \
     student.h \
     faculty.h \
     voter.h
-SOURCES += main.cpp Person.cpp \
+SOURCES += Person.cpp \
     student.cpp \
     faculty.cpp \
     voter.cpp \
-    CheckOutPersonClass.cpp
+    CheckOutPersonClass.cpp \
+    YangJ.cpp \
+    CheckOutFacultyClass.cpp

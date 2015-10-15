@@ -47,3 +47,14 @@ Faculty::~Faculty()
 {
     delete m_degrees;
 }
+
+Faculty::Faculty(const Faculty &f) : Person(f){
+
+    std::cout << f.getAge();
+
+
+}
+
+Faculty& Faculty::operator =(const Faculty& f){
+
+}

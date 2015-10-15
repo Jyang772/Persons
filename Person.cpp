@@ -92,7 +92,7 @@ void Person::setAge(int age)
     m_age = age;
 }
 
-int Person::getAge()
+int Person::getAge() const
 {
     return m_age;
 }

@@ -45,18 +45,20 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = main.cpp \
-		Person.cpp \
+SOURCES       = Person.cpp \
 		student.cpp \
 		faculty.cpp \
 		voter.cpp \
-		CheckOutPersonClass.cpp 
-OBJECTS       = main.o \
-		Person.o \
+		CheckOutPersonClass.cpp \
+		YangJ.cpp \
+		CheckOutFacultyClass.cpp 
+OBJECTS       = Person.o \
 		student.o \
 		faculty.o \
 		voter.o \
-		CheckOutPersonClass.o
+		CheckOutPersonClass.o \
+		YangJ.o \
+		CheckOutFacultyClass.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -306,7 +308,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/Persons1.0.0 || mkdir -p .tmp/Persons1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Persons1.0.0/ && $(COPY_FILE) --parents Person.h student.h faculty.h voter.h .tmp/Persons1.0.0/ && $(COPY_FILE) --parents main.cpp Person.cpp student.cpp faculty.cpp voter.cpp CheckOutPersonClass.cpp .tmp/Persons1.0.0/ && (cd `dirname .tmp/Persons1.0.0` && $(TAR) Persons1.0.0.tar Persons1.0.0 && $(COMPRESS) Persons1.0.0.tar) && $(MOVE) `dirname .tmp/Persons1.0.0`/Persons1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Persons1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Persons1.0.0/ && $(COPY_FILE) --parents Person.h student.h faculty.h voter.h .tmp/Persons1.0.0/ && $(COPY_FILE) --parents Person.cpp student.cpp faculty.cpp voter.cpp CheckOutPersonClass.cpp YangJ.cpp CheckOutFacultyClass.cpp .tmp/Persons1.0.0/ && (cd `dirname .tmp/Persons1.0.0` && $(TAR) Persons1.0.0.tar Persons1.0.0 && $(COMPRESS) Persons1.0.0.tar) && $(MOVE) `dirname .tmp/Persons1.0.0`/Persons1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Persons1.0.0
 
 
 clean:compiler_clean 
@@ -343,11 +345,6 @@ compiler_clean:
 
 ####### Compile
 
-main.o: main.cpp Person.h \
-		student.h \
-		faculty.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
-
 Person.o: Person.cpp Person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Person.o Person.cpp
 
@@ -363,8 +360,16 @@ voter.o: voter.cpp voter.h \
 		Person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o voter.o voter.cpp
 
-CheckOutPersonClass.o: CheckOutPersonClass.cpp 
+CheckOutPersonClass.o: CheckOutPersonClass.cpp Person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CheckOutPersonClass.o CheckOutPersonClass.cpp
+
+YangJ.o: YangJ.cpp Person.h \
+		student.h \
+		faculty.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o YangJ.o YangJ.cpp
+
+CheckOutFacultyClass.o: CheckOutFacultyClass.cpp Person.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CheckOutFacultyClass.o CheckOutFacultyClass.cpp
 
 ####### Install
 
